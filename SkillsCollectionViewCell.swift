@@ -38,7 +38,7 @@ class SkillsCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(wordLabel)
         contentView.addSubview(deleteButton)
         contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = .systemGray3
+        contentView.backgroundColor = .systemGray5
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         
         wordLabel.translatesAutoresizingMaskIntoConstraints = false

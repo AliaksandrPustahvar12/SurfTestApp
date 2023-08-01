@@ -15,6 +15,7 @@
 		D4DA1B592A78E88200504E30 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B582A78E88200504E30 /* ProfileModel.swift */; };
 		D4DA1B5B2A78E95F00504E30 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B5A2A78E95F00504E30 /* ProfileViewModel.swift */; };
 		D4DA1B5D2A7934FC00504E30 /* SkillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */; };
+		D4DA1B612A798C9200504E30 /* AddCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D4DA1B582A78E88200504E30 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		D4DA1B5A2A78E95F00504E30 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */,
+				D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */,
 				D4DA1B432A78E83500504E30 /* SurfTestApp */,
 				D4DA1B422A78E83500504E30 /* Products */,
 			);
@@ -145,6 +148,7 @@
 			files = (
 				D4DA1B5D2A7934FC00504E30 /* SkillsCollectionViewCell.swift in Sources */,
 				D4DA1B492A78E83500504E30 /* ViewController.swift in Sources */,
+				D4DA1B612A798C9200504E30 /* AddCellCollectionViewCell.swift in Sources */,
 				D4DA1B452A78E83500504E30 /* AppDelegate.swift in Sources */,
 				D4DA1B472A78E83500504E30 /* SceneDelegate.swift in Sources */,
 				D4DA1B592A78E88200504E30 /* ProfileModel.swift in Sources */,
@@ -291,8 +295,7 @@
 				INFOPLIST_FILE = SurfTestApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,8 +321,7 @@
 				INFOPLIST_FILE = SurfTestApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

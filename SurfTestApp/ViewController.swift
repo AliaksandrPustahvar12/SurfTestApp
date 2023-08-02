@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     let profileView = UIView()
     var words = ["Hello", "World", "Lorem", "Ipsum", "Swift", "Collection", "View", "Example"]
     
+    private var collectionViewHeightConstraint: NSLayoutConstraint!
+    
     let skillsView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -38,6 +40,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
     }
+    
+    override func viewWillLayoutSubviews() {
+            super.viewWillLayoutSubviews()
+        collectionViewHeightConstraint.constant = skillsView.collectionViewLayout.collectionViewContentSize.height
+        }
     
     private func setUpView() {
         let profileScrollView = UIScrollView(frame: view.bounds)
@@ -65,11 +72,6 @@ class ViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: profileScrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalToConstant: 880)
         ])
-        
-                let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: profileScrollView.heightAnchor)
-                contentViewHeightConstraint.priority = .defaultLow
-                contentViewHeightConstraint.isActive = true
-        
         
          createProfileView()
         
@@ -246,7 +248,7 @@ class ViewController: UIViewController {
                 skillsView.delegate = self
                 skillsView.dataSource = self
                 skillsView.register(SkillsCollectionViewCell.self, forCellWithReuseIdentifier: "SkillsCollectionViewCell")
-                skillsView.register(SkillsCollectionViewCell.self, forCellWithReuseIdentifier: "AddCellCollectionViewCell")
+                skillsView.register(AddCellCollectionViewCell.self, forCellWithReuseIdentifier: "AddCellCollectionViewCell")
                 skillsView.backgroundColor = .white
                 skillsView.isScrollEnabled = false
                 view.addSubview(skillsView)
@@ -256,8 +258,9 @@ class ViewController: UIViewController {
                     skillsView.topAnchor.constraint(equalTo: mySkillsLabel.bottomAnchor, constant: 15),
                     skillsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
                     skillsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-                    skillsView.heightAnchor.constraint(equalToConstant: 250)
                 ])
+                collectionViewHeightConstraint = skillsView.heightAnchor.constraint(equalToConstant: 50)
+                       collectionViewHeightConstraint.isActive = true
             }
         
             @objc private func editButtonTapped() {
@@ -271,8 +274,7 @@ class ViewController: UIViewController {
                 }
                 skillsView.reloadData()
             }
-        
-        }
+    }
         
 extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -280,27 +282,32 @@ extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row != words.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillsCollectionViewCell", for: indexPath) as! SkillsCollectionViewCell
-            cell.configure(with: words[indexPath.item])
-            cell.isEditing = isEditingMode
-            cell.deleteButtonHandler = { [weak self] in
-                self?.words.remove(at: indexPath.item)
+        if indexPath.row == words.count - 1 && isEditingMode {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddCellCollectionViewCell", for: indexPath) as! AddCellCollectionViewCell
+            cell.addButtonHandler = { [weak self] in
+                self?.words.remove(at: indexPath.row)
                 self?.skillsView.deleteItems(at: [indexPath])
             }
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddCellCollectionViewCell", for: indexPath) as! AddCellCollectionViewCell
-            cell.addButtonHandler = { [weak self] in
-                self?.words.remove(at: indexPath.item)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillsCollectionViewCell", for: indexPath) as! SkillsCollectionViewCell
+            cell.configure(with: words[indexPath.item])
+            cell.isEditing = isEditingMode
+            cell.deleteButtonHandler = { [weak self] in
+                print(indexPath.row)
+                print(indexPath.item)
+                print(self?.words[indexPath.row])
+                self?.words.remove(at: indexPath.row)
                 self?.skillsView.deleteItems(at: [indexPath])
+                self?.skillsView.reloadData()
+                print(self?.words)
             }
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        self.skillsView.reloadData()
         let word = words[indexPath.item]
         var size: CGSize = CGSize(width: 50, height: 40)
         if !isEditingMode {

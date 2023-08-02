@@ -32,6 +32,7 @@ class AddCellCollectionViewCell: UICollectionViewCell {
             addButton.topAnchor.constraint(equalTo: contentView.topAnchor),
             addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             addButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            addButton.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     

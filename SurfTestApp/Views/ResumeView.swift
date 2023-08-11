@@ -9,22 +9,22 @@ import UIKit
 
 class ResumeView: UIViewController {
     
-   let profileScrollView = UIScrollView()
-    let contentView = UIView()
-    let profileView = UIView()
-    let titleLabel = UILabel()
-    let locationView = UIView()
-    let locationIcon = UIImageView()
-    let locationLabel = UILabel()
-    let imageView = UIImageView()
-    let editButton = UIButton()
-    let nameLabel = UILabel()
-    let aboutLabel = UILabel()
-    let mySkillsLabel = UILabel()
-    let aboutMeLabel = UILabel()
-    let descriptionLabel = UILabel()
+  private let profileScrollView = UIScrollView()
+   private let contentView = UIView()
+   private let profileView = UIView()
+   private let titleLabel = UILabel()
+   private let locationView = UIView()
+   private let locationIcon = UIImageView()
+   private let locationLabel = UILabel()
+   private let imageView = UIImageView()
+   private let editButton = UIButton()
+   private let nameLabel = UILabel()
+   private let aboutLabel = UILabel()
+   private let mySkillsLabel = UILabel()
+   private let aboutMeLabel = UILabel()
+   private let descriptionLabel = UILabel()
     
-    let skillsView: UICollectionView = {
+   private let skillsView: UICollectionView = {
         let layout = LeftAligmentCollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 5
@@ -47,7 +47,7 @@ class ResumeView: UIViewController {
         collectionViewHeightConstraint.constant =  skillsView.collectionViewLayout.collectionViewContentSize.height
     }
     
-    func setUpView() {
+   private func setUpView() {
         
         profileScrollView.alwaysBounceVertical = true
         profileScrollView.showsVerticalScrollIndicator = true
@@ -60,7 +60,7 @@ class ResumeView: UIViewController {
         setUpSkills()
     }
     
-    func setUpProfile() {
+   private func setUpProfile() {
         
         profileView.backgroundColor = .systemGray6
         contentView.addSubview(profileView)
@@ -93,7 +93,6 @@ class ResumeView: UIViewController {
         
         profileView.addSubview(locationView)
         
-        //  let locationIcon = UIImageView()
         locationIcon.contentMode = .scaleAspectFit
         locationIcon.image = UIImage(named: "location")
         locationView.addSubview(locationIcon)
@@ -104,7 +103,7 @@ class ResumeView: UIViewController {
         locationView.addSubview(locationLabel)
     }
     
-    func setUpSkills() {
+   private func setUpSkills() {
         
         mySkillsLabel.text = "Мои навыки"
         mySkillsLabel.font = UIFont.systemFont(ofSize: 16)
@@ -135,7 +134,7 @@ class ResumeView: UIViewController {
         contentView.addSubview(descriptionLabel)
     }
     
-    func setUpLayouts() {
+   private func setUpLayouts() {
         
         profileScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -265,9 +264,9 @@ class ResumeView: UIViewController {
         editButton.setImage(UIImage(named: controller.isEditingMode ? "accept" : "pencil"), for: .normal)
     }
     
-    func showAlertButtonTapped() {
+   private func showAlertButtonTapped() {
 
-        let alert = UIAlertController(title: "Добавление навыка", message: "Введите название навыка, которым вы владеете", preferredStyle: .alert)
+        let alert = createAlert(title: "Добавление навыка", message: "Введите название навыка, которым вы владеете")
 
         alert.addTextField { textField in
             textField.placeholder = "Введите название"
@@ -283,6 +282,9 @@ class ResumeView: UIViewController {
         }
         alert.addAction(addAction)
         present(alert, animated: true)
+    }
+    private func createAlert(title: String, message: String?) -> UIAlertController {
+        UIAlertController(title: title, message: message, preferredStyle: .alert)
     }
 }
 

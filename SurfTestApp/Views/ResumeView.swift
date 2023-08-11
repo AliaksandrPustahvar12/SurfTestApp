@@ -9,7 +9,7 @@ import UIKit
 
 class ResumeView: UIViewController {
     
-    let profileScrollView = UIScrollView()
+   let profileScrollView = UIScrollView()
     let contentView = UIView()
     let profileView = UIView()
     let titleLabel = UILabel()
@@ -110,7 +110,7 @@ class ResumeView: UIViewController {
         mySkillsLabel.font = UIFont.systemFont(ofSize: 16)
         contentView.addSubview(mySkillsLabel)
         
-        editButton.setImage(UIImage(named: "pencil"), for: .normal)
+        editButton.setImage(UIImage(named: controller.isEditingMode ? "accept" : "pencil"), for: .normal)
         
         editButton.contentMode = .scaleAspectFit
         editButton.tintColor = .black
@@ -260,7 +260,29 @@ class ResumeView: UIViewController {
     }
     
     @objc private func editButtonTapped() {
-        self.controller.editButtonTapped(editButton: editButton, skillsView: skillsView)
+        self.controller.editButtonTapped()
+        skillsView.reloadData()
+        editButton.setImage(UIImage(named: controller.isEditingMode ? "accept" : "pencil"), for: .normal)
+    }
+    
+    func showAlertButtonTapped() {
+
+        let alert = UIAlertController(title: "Добавление навыка", message: "Введите название навыка, которым вы владеете", preferredStyle: .alert)
+
+        alert.addTextField { textField in
+            textField.placeholder = "Введите название"
+            textField.autocapitalizationType = .sentences
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+        alert.addAction(cancelAction)
+        let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
+            guard let skill = alert.textFields?.first?.text else { return }
+            self.controller.addSkill(skill: skill)
+            self.skillsView.reloadData()
+            self.editButton.setImage(UIImage(named: "pencil"), for: .normal)
+        }
+        alert.addAction(addAction)
+        present(alert, animated: true)
     }
 }
 
@@ -279,7 +301,7 @@ extension ResumeView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddCellCollectionViewCell", for: indexPath) as! AddCellCollectionViewCell
             cell.addButtonHandler = { [weak self] in
                 guard let view = self else { return }
-                view.controller.showAlertButtonTapped(editButton: view.editButton, skillsView: view.skillsView, view: view)
+                view.showAlertButtonTapped()
             }
             return cell
         }
@@ -289,7 +311,9 @@ extension ResumeView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             cell.isEditing = controller.isEditingMode
                         cell.deleteButtonHandler = { [weak self] in
                             guard let view = self else { return }
-                            view.controller.deleteButtonTapped(skill: view.controller.skills[indexPath.item], indexPath: indexPath, skillsView: collectionView)
+                            view.controller.deleteButtonTapped(skill: view.controller.skills[indexPath.item], indexPath: indexPath)
+                            view.skillsView.deleteItems(at: [indexPath])
+                            view.skillsView.reloadData()
                         }
             return cell
         }

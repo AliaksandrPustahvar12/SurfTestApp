@@ -11,9 +11,8 @@ class AddCellCollectionViewCell: UICollectionViewCell {
     
     private let addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("+", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.setTitleColor(.black, for: .normal)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
         return button
     }()
     

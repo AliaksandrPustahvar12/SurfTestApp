@@ -9,27 +9,31 @@
 /* Begin PBXBuildFile section */
 		D4DA1B452A78E83500504E30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B442A78E83500504E30 /* AppDelegate.swift */; };
 		D4DA1B472A78E83500504E30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B462A78E83500504E30 /* SceneDelegate.swift */; };
-		D4DA1B492A78E83500504E30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B482A78E83500504E30 /* ViewController.swift */; };
 		D4DA1B4E2A78E83700504E30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4DA1B4D2A78E83700504E30 /* Assets.xcassets */; };
 		D4DA1B512A78E83700504E30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4DA1B4F2A78E83700504E30 /* LaunchScreen.storyboard */; };
 		D4DA1B592A78E88200504E30 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B582A78E88200504E30 /* ProfileModel.swift */; };
-		D4DA1B5B2A78E95F00504E30 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B5A2A78E95F00504E30 /* ProfileViewModel.swift */; };
 		D4DA1B5D2A7934FC00504E30 /* SkillsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */; };
 		D4DA1B612A798C9200504E30 /* AddCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */; };
+		D4DA1BCD2A84CF3B00504E30 /* LeftAligmentCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1BCC2A84CF3B00504E30 /* LeftAligmentCollectionViewFlowLayout.swift */; };
+		D4DA1BCF2A84FA7000504E30 /* SkillsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1BCE2A84FA7000504E30 /* SkillsService.swift */; };
+		D4DA1BD32A8655E400504E30 /* ResumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1BD22A8655E400504E30 /* ResumeView.swift */; };
+		D4DA1BD52A8657E400504E30 /* ResumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DA1BD42A8657E400504E30 /* ResumeController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D4DA1B412A78E83500504E30 /* SurfTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurfTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4DA1B442A78E83500504E30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4DA1B462A78E83500504E30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D4DA1B482A78E83500504E30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D4DA1B4D2A78E83700504E30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4DA1B502A78E83700504E30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4DA1B522A78E83700504E30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4DA1B582A78E88200504E30 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
-		D4DA1B5A2A78E95F00504E30 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsCollectionViewCell.swift; sourceTree = "<group>"; };
 		D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		D4DA1BCC2A84CF3B00504E30 /* LeftAligmentCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAligmentCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		D4DA1BCE2A84FA7000504E30 /* SkillsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsService.swift; sourceTree = "<group>"; };
+		D4DA1BD22A8655E400504E30 /* ResumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeView.swift; sourceTree = "<group>"; };
+		D4DA1BD42A8657E400504E30 /* ResumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +50,6 @@
 		D4DA1B382A78E83500504E30 = {
 			isa = PBXGroup;
 			children = (
-				D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */,
-				D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */,
 				D4DA1B432A78E83500504E30 /* SurfTestApp */,
 				D4DA1B422A78E83500504E30 /* Products */,
 			);
@@ -66,14 +68,58 @@
 			children = (
 				D4DA1B442A78E83500504E30 /* AppDelegate.swift */,
 				D4DA1B462A78E83500504E30 /* SceneDelegate.swift */,
-				D4DA1B482A78E83500504E30 /* ViewController.swift */,
-				D4DA1B582A78E88200504E30 /* ProfileModel.swift */,
-				D4DA1B5A2A78E95F00504E30 /* ProfileViewModel.swift */,
+				D4DA1BD92A86922000504E30 /* Views */,
+				D4DA1BDA2A86923500504E30 /* Controllers */,
+				D4DA1BDB2A86924C00504E30 /* Model */,
+				D4DA1BD82A8691ED00504E30 /* Cells */,
+				D4DA1BDC2A86984B00504E30 /* Services */,
+				D4DA1BCC2A84CF3B00504E30 /* LeftAligmentCollectionViewFlowLayout.swift */,
 				D4DA1B4D2A78E83700504E30 /* Assets.xcassets */,
 				D4DA1B4F2A78E83700504E30 /* LaunchScreen.storyboard */,
 				D4DA1B522A78E83700504E30 /* Info.plist */,
 			);
 			path = SurfTestApp;
+			sourceTree = "<group>";
+		};
+		D4DA1BD82A8691ED00504E30 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA1B602A798C9200504E30 /* AddCellCollectionViewCell.swift */,
+				D4DA1B5C2A7934FC00504E30 /* SkillsCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D4DA1BD92A86922000504E30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA1BD22A8655E400504E30 /* ResumeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4DA1BDA2A86923500504E30 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA1BD42A8657E400504E30 /* ResumeController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D4DA1BDB2A86924C00504E30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA1B582A78E88200504E30 /* ProfileModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D4DA1BDC2A86984B00504E30 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D4DA1BCE2A84FA7000504E30 /* SkillsService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,13 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DA1BD32A8655E400504E30 /* ResumeView.swift in Sources */,
 				D4DA1B5D2A7934FC00504E30 /* SkillsCollectionViewCell.swift in Sources */,
-				D4DA1B492A78E83500504E30 /* ViewController.swift in Sources */,
 				D4DA1B612A798C9200504E30 /* AddCellCollectionViewCell.swift in Sources */,
 				D4DA1B452A78E83500504E30 /* AppDelegate.swift in Sources */,
 				D4DA1B472A78E83500504E30 /* SceneDelegate.swift in Sources */,
 				D4DA1B592A78E88200504E30 /* ProfileModel.swift in Sources */,
-				D4DA1B5B2A78E95F00504E30 /* ProfileViewModel.swift in Sources */,
+				D4DA1BCD2A84CF3B00504E30 /* LeftAligmentCollectionViewFlowLayout.swift in Sources */,
+				D4DA1BD52A8657E400504E30 /* ResumeController.swift in Sources */,
+				D4DA1BCF2A84FA7000504E30 /* SkillsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

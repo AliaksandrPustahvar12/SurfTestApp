@@ -19,14 +19,13 @@ class SkillsCollectionViewCell: UICollectionViewCell {
     
     private let deleteButton: UIButton = {
         let button = UIButton()
-        button.setTitle("X", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
-        button.titleLabel?.textAlignment = .left
-        button.setTitleColor(.black, for: .normal)
+        button.tintColor = .black
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
         return button
     }()
     
     var deleteButtonHandler: (() -> Void)?
+    
     var isEditing: Bool = false {
         didSet {
             deleteButton.isHidden = !isEditing
@@ -50,10 +49,9 @@ class SkillsCollectionViewCell: UICollectionViewCell {
             wordLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
             wordLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             deleteButton.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 15),
-            deleteButton.widthAnchor.constraint(equalToConstant: 10),
-            deleteButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -61,8 +59,8 @@ class SkillsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with word: String) {
-        wordLabel.text = word
+    func configure(with skill: Profile.SkillModel) {
+        wordLabel.text = skill.skill
     }
     
     @objc private func deleteButtonTapped() {

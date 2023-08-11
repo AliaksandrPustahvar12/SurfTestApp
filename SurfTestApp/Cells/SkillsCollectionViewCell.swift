@@ -20,6 +20,7 @@ class SkillsCollectionViewCell: UICollectionViewCell {
     private let deleteButton: UIButton = {
         let button = UIButton()
         button.tintColor = .black
+        button.imageView?.contentMode = .scaleAspectFit
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         return button
     }()
@@ -37,8 +38,8 @@ class SkillsCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(wordLabel)
         contentView.addSubview(deleteButton)
-        contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = .systemGray5
+        contentView.layer.cornerRadius = 12
+        contentView.backgroundColor = .systemGray6
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         
         wordLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -49,8 +50,8 @@ class SkillsCollectionViewCell: UICollectionViewCell {
             wordLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
             wordLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 19),
+            deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -19),
             deleteButton.leadingAnchor.constraint(equalTo: wordLabel.trailingAnchor, constant: 15),
         ])
     }

@@ -22,8 +22,8 @@ class AddCellCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(addButton)
-        contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = .systemGray5
+        contentView.layer.cornerRadius = 12
+        contentView.backgroundColor = .systemGray6
         addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         
         addButton.translatesAutoresizingMaskIntoConstraints = false

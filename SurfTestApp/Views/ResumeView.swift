@@ -9,22 +9,22 @@ import UIKit
 
 class ResumeView: UIViewController {
     
-  private let profileScrollView = UIScrollView()
-   private let contentView = UIView()
-   private let profileView = UIView()
-   private let titleLabel = UILabel()
-   private let locationView = UIView()
-   private let locationIcon = UIImageView()
-   private let locationLabel = UILabel()
-   private let imageView = UIImageView()
-   private let editButton = UIButton()
-   private let nameLabel = UILabel()
-   private let aboutLabel = UILabel()
-   private let mySkillsLabel = UILabel()
-   private let aboutMeLabel = UILabel()
-   private let descriptionLabel = UILabel()
+    private let profileScrollView = UIScrollView()
+    private let contentView = UIView()
+    private let profileView = UIView()
+    private let titleLabel = UILabel()
+    private let locationView = UIView()
+    private let locationIcon = UIImageView()
+    private let locationLabel = UILabel()
+    private let imageView = UIImageView()
+    private let editButton = UIButton()
+    private let nameLabel = UILabel()
+    private let aboutLabel = UILabel()
+    private let mySkillsLabel = UILabel()
+    private let aboutMeLabel = UILabel()
+    private let descriptionLabel = UILabel()
     
-   private let skillsView: UICollectionView = {
+    private let skillsView: UICollectionView = {
         let layout = LeftAligmentCollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 5
@@ -47,7 +47,7 @@ class ResumeView: UIViewController {
         collectionViewHeightConstraint.constant =  skillsView.collectionViewLayout.collectionViewContentSize.height
     }
     
-   private func setUpView() {
+    private func setUpView() {
         
         profileScrollView.alwaysBounceVertical = true
         profileScrollView.showsVerticalScrollIndicator = true
@@ -60,7 +60,7 @@ class ResumeView: UIViewController {
         setUpSkills()
     }
     
-   private func setUpProfile() {
+    private func setUpProfile() {
         
         profileView.backgroundColor = .systemGray6
         contentView.addSubview(profileView)
@@ -103,7 +103,7 @@ class ResumeView: UIViewController {
         locationView.addSubview(locationLabel)
     }
     
-   private func setUpSkills() {
+    private func setUpSkills() {
         
         mySkillsLabel.text = "Мои навыки"
         mySkillsLabel.font = UIFont.systemFont(ofSize: 16)
@@ -130,11 +130,11 @@ class ResumeView: UIViewController {
         
         descriptionLabel.text = controller.profile.description
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.font = UIFont.systemFont(ofSize: 15)
         contentView.addSubview(descriptionLabel)
     }
     
-   private func setUpLayouts() {
+    private func setUpLayouts() {
         
         profileScrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -243,11 +243,11 @@ class ResumeView: UIViewController {
         collectionViewHeightConstraint.isActive = true
         
         aboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
-                NSLayoutConstraint.activate([
-                    aboutMeLabel.topAnchor.constraint(equalTo: skillsView.bottomAnchor, constant: 10),
-                    aboutMeLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
-                    aboutMeLabel.heightAnchor.constraint(equalToConstant: 25)
-                ])
+        NSLayoutConstraint.activate([
+            aboutMeLabel.topAnchor.constraint(equalTo: skillsView.bottomAnchor, constant: 10),
+            aboutMeLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15),
+            aboutMeLabel.heightAnchor.constraint(equalToConstant: 25)
+        ])
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -264,27 +264,34 @@ class ResumeView: UIViewController {
         editButton.setImage(UIImage(named: controller.isEditingMode ? "accept" : "pencil"), for: .normal)
     }
     
-   private func showAlertButtonTapped() {
-
-        let alert = createAlert(title: "Добавление навыка", message: "Введите название навыка, которым вы владеете")
-
-        alert.addTextField { textField in
-            textField.placeholder = "Введите название"
-            textField.autocapitalizationType = .sentences
-        }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        alert.addAction(cancelAction)
-        let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
+    private func showAlertButtonTapped() {
+        
+        var alert = UIAlertController()
+        
+        alert = createAlert(title: "Добавление навыка",
+                            message: "Введите название навыка, которым вы владеете",
+                            placeholder: "Введите название", action: UIAlertAction(title: "Добавить", style: .default, handler: { _ in
             guard let skill = alert.textFields?.first?.text else { return }
             self.controller.addSkill(skill: skill)
             self.skillsView.reloadData()
             self.editButton.setImage(UIImage(named: "pencil"), for: .normal)
-        }
-        alert.addAction(addAction)
-        present(alert, animated: true)
+        }))
+        self.present(alert, animated: true)
     }
-    private func createAlert(title: String, message: String?) -> UIAlertController {
-        UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    private func createAlert(title: String, message: String?, placeholder: String, action: UIAlertAction) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.placeholder = placeholder
+            textField.autocapitalizationType = .sentences
+            
+            let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+            alert.addAction(cancelAction)
+            
+            alert.addAction(action)
+        }
+        return alert
     }
 }
 
@@ -311,30 +318,19 @@ extension ResumeView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillsCollectionViewCell", for: indexPath) as! SkillsCollectionViewCell
             cell.configure(with: controller.skills[indexPath.item])
             cell.isEditing = controller.isEditingMode
-                        cell.deleteButtonHandler = { [weak self] in
-                            guard let view = self else { return }
-                            view.controller.deleteButtonTapped(skill: view.controller.skills[indexPath.item], indexPath: indexPath)
-                            view.skillsView.deleteItems(at: [indexPath])
-                            view.skillsView.reloadData()
-                        }
+            cell.deleteButtonHandler = { [weak self] in
+                guard let view = self else { return }
+                view.controller.deleteButtonTapped(skill: view.controller.skills[indexPath.item], indexPath: indexPath)
+                view.skillsView.deleteItems(at: [indexPath])
+                view.skillsView.reloadData()
+            }
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         self.skillsView.reloadData()
-        if indexPath.row == controller.skills.count {
-            return CGSize(width: 48, height: 48)
-        } else {
-            let skill = controller.skills[indexPath.item].skill
-            var size: CGSize = CGSize(width: 50, height: 40)
-            if !controller.isEditingMode {
-                size = skill.size(withAttributes: [.font: UIFont.systemFont(ofSize: 16)])
-            } else {
-                size = skill.size(withAttributes: [.font: UIFont.systemFont(ofSize: 16)])
-                size.width += 30
-            }
-            return CGSize(width: size.width + 50,  height: size.height + 30)
-        }
+        let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16)]
+        return controller.getCellSize(indexPath: indexPath, attributes: attributes)
     }
 }

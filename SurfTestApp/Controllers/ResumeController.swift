@@ -44,4 +44,21 @@ final class ResumeController {
         self.isEditingMode.toggle()
         self.service.saveSkills(self.skills)
     }
+    
+    func getCellSize(indexPath: IndexPath, attributes: [NSAttributedString.Key: Any] ) -> CGSize {
+        
+        if indexPath.row == skills.count {
+            return CGSize(width: 48, height: 48)
+        } else {
+            let skill = skills[indexPath.item].skill
+            var size: CGSize = CGSize(width: 50, height: 40)
+            if !isEditingMode {
+                size = skill.size(withAttributes: attributes)
+            } else {
+                size = skill.size(withAttributes: attributes)
+                size.width += 30
+            }
+            return CGSize(width: size.width + 50,  height: size.height + 30)
+        }
+    }
 }

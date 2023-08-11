@@ -9,6 +9,7 @@ import UIKit
 
 class ResumeView: UIViewController {
     
+    private let topView = UIView()
     private let profileScrollView = UIScrollView()
     private let contentView = UIView()
     private let profileView = UIView()
@@ -49,10 +50,14 @@ class ResumeView: UIViewController {
     
     private func setUpView() {
         
+        topView.backgroundColor = .systemGray6
+        profileScrollView.addSubview(topView)
+        
         profileScrollView.alwaysBounceVertical = true
         profileScrollView.showsVerticalScrollIndicator = true
-        profileScrollView.backgroundColor = .systemGray6
+        profileScrollView.backgroundColor = .white
         self.view.addSubview(profileScrollView)
+        
         
         contentView.backgroundColor = .white
         profileScrollView.addSubview(contentView)
@@ -142,6 +147,14 @@ class ResumeView: UIViewController {
             profileScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             profileScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             profileScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topView.topAnchor.constraint(equalTo: view.topAnchor),
+            topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topView.bottomAnchor.constraint(equalTo: contentView.topAnchor)
         ])
         
         contentView.translatesAutoresizingMaskIntoConstraints = false

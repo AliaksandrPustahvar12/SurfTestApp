@@ -46,8 +46,11 @@ final class ResumeController {
         guard let index = skills.firstIndex(where: { $0.skill == skill.skill}) else { return }
         skills.remove(at: index)
         skillsView.deleteItems(at: [indexPath])
-        skillsView.reloadData()
         service.saveSkills(skills)
+        skills = service.fetchSkills()
+        DispatchQueue.main.async {
+            skillsView.reloadData()
+        }
     }
   
     func showAlertButtonTapped(editButton: UIButton, skillsView: UICollectionView, view: UIViewController) {
